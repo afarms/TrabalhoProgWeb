@@ -25,6 +25,57 @@
             <app-message [inputMessage]="messageBindingAlias"
                             (outputMessage) = "messageBindingAlias.content = $event">
             </app-message>
+            <app-message [messageVarClasse]="msg"
+                            (editClicked_MessageMetodoClasse)="msg.content = $event"
+                            *ngFor = "let msg of messageS">
+            </app-message>
         </div>
     </div>
 </div>
+<!--Exemplo 01 diretivas de estrutura ngIf-->
+<button (click)="onMudaMostrarElemento()">Click aqui Novo Estudo</button>
+{{mostrarElemento}}
+<p *ngIf="mostrarElemento"><!-- *ngIf romove o elemento do DOM se o valor da expressão for falso -->
+    {{mostrarElemento ? 'p Mostrado|'+mostrarElemento:'p Removido|+mostrarElemento'}}.
+</p>
+<br/><br/>
+<!--Exemplo 02 diretivas de estrutura ngIf-->
+<button (click)="onMudaMostrarElemento()">Click aqui DIV</button>
+{{mostrarElemento}}
+<div *ngIf="mostrarElemento"><!-- *ngIf romove o elemento do DOM se o valor da expressão for falso -->
+    <p>Cadê adiv que estava aqui com um monte de lementos</p>
+    <select id="cboCidades">
+        <option value=""></option>
+        <option value="vix">Vitória</option>
+        <option value="vv">Vila Velha</option>
+    </select>
+    <button>Click aqui</button>
+</div>
+<br/><br/>
+<!--Exemplo 03 diretivas de estrutura ngIf-->
+<button (click)="onMudaMostrarElemento()">Click aqui p'com then e else'</button>
+{{mostrarElemento}}
+<p *ngIf="mostrarElemento; then thenBlockMy else elseBlockMy"></p>
+    <ng-template #thenBlockMy><p>{{mostrarElemento}} - Mostrando o Then...</p></ng-template>
+    <ng-template #elseBlockMy><p>{{mostrarElemento}} - Escondido o Else...</p></ng-template>
+
+<!--Exemplo 04 diretivas de estrutura ngSwitch-->
+<button (click) = "valorNgSwitch=1">selecione - 1</button>
+<button (click) = "valorNgSwitch=2">selecione - 2</button>
+<button (click) = "valorNgSwitch=3">selecione - 3</button>
+<h5> Você selecionou: {{valorNgSwitch}}</h5>
+<div [ngSwitch]="valorNgSwitch">
+    <div *ngSwitchCase="1">1. Template -<b>{{valorNgSwitch}}</b></div>
+    <div *ngSwitchCase="2">2. Template -<b>{{valorNgSwitch}}</b></div>
+    <div *ngSwitchCase="3">3. Template -<b>{{valorNgSwitch}}</b></div>
+    <div *ngSwitchDefault>Default Template
+</div>
+<!--Exemplo 05 diretivas de estrutura ngSwitch com string-->
+<input type="text" [(ngModel)]="nomeNgSwitch">
+{{nomeNgSwitch}}
+<ul [ngSwitch]="nomeNgSwitch">
+    <li *ngSwitchCase="'Rafael'">Bom dia Rafael</li>
+    <li *ngSwitchCase="'Moreira'">Bom dia Moreira</li>
+    <li *ngSwitchCase="'Santos'">Bom dia Santos</li>
+    <li *ngSwitchDefault>Bye Bye</li>
+</ul>

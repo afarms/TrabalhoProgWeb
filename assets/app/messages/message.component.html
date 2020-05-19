@@ -1,4 +1,8 @@
-<article class="panel panel-defaut">
+<article class="panel panel-defaut" [ngStyle]="{backgroundColor: color}"
+                                    (click)="color = 'yellow'"
+                                    (dblclick)="onMudaStyle()"
+                                    (mouseenter)="color = 'green'"
+                                    (mouseleave)="color = 'blue'">
     <div class="panel-body">
         {{messageVarClasse.content}}
         {{messageVarClasseAlias.content}}

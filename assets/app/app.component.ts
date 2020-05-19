@@ -20,6 +20,18 @@ import { Message } from './messages/message.model';
     `]*/
 })
 export class AppComponent {
+    mostrarElemento: boolean = true;
+
+    valorNgSwitch: number;
+
+    nomeNgSwitch: string = "";
+    onMudaMostrarElemento(){
+        this.mostrarElemento = !this.mostrarElemento;
+    }
     messageBinding: Message = new Message("Texto da Mensagem","RafaelMoreira");   
     messageBindingAlias: Message = new Message("Texto da Mensagem Alias","RafaelMoreiraAlias");
+    messageS: Message[] = [new Message("Texto da Mensagem vetor 1","RafaelMoreiraVetor01"),
+                            new Message("Texto da Mensagem veto 2","RafaelMoreiraVetor02"),
+                            new Message("Texto da Mensagem vetor 3","RafaelMoreiraVetor03")
+    ]
 }
